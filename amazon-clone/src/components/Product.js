@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Product.css";
-import ProductImg1 from "../images/product-img1.jpg";
 import { useStateValue } from "../StateProvider";
 
 function Product(props) {
