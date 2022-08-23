@@ -1,9 +1,26 @@
 import React from "react";
 import "../css/Product.css";
 import ProductImg1 from "../images/product-img1.jpg";
+import { useStateValue } from "../StateProvider";
 
 function Product(props) {
-    const {id, title, price, img, rating} = props
+	const { id, title, price, img, rating } = props;
+
+	const [ state, dispatch ] = useStateValue();
+
+	const addToBasket = () => {
+		dispatch({
+			type: "ADD_TO_BASKET",
+			item: {
+				id: id,
+				title: title,
+				price: price,
+				img: img,
+				rating: rating,
+			},
+		});
+	};
+
 	return (
 		<div className="product">
 			<div className="product__info">
@@ -21,7 +38,7 @@ function Product(props) {
 				</div>
 			</div>
 			<img src={img} className="product__img" />
-			<button>Add to Basket</button>
+			<button onClick={addToBasket}>Add to Basket</button>
 		</div>
 	);
 }
